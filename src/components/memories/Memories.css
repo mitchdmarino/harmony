@@ -1,0 +1,7 @@
+.memories {
+    background-color: var(--tertiary);
+    height: 500px;
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}

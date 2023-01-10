@@ -10,7 +10,27 @@
 }
 
 .homepage .logo {
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+.auth-section {
+    margin: 0 auto;
     text-align: center;
+}
+
+.auth-section button {
+    background-color: var(--tertiary);
+    padding: 40px;
+    min-width: 200px;
+    border-radius: 20px;
+    margin: 30px 30px;
+    font-size: 2rem;
+}
+
+.auth-section button:hover {
+    background-color: white;
+    cursor: pointer;
 }
 
 
