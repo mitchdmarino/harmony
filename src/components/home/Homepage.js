@@ -13,6 +13,8 @@ const user1 = {
     }
 }
 
+// const user1 = null
+
 export default function Homepage({user=user1}) {
     const [showAuth, setShowAuth] = useState(true)
     useEffect(() => {

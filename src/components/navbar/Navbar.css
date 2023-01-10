@@ -1,0 +1,13 @@
+.nav {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-item {
+    background-color: white;;
+    border-radius: 10px;
+    min-width: 100px;
+    text-align: center;
+    margin: 10px 20px;
+}
+
