@@ -1,0 +1,17 @@
+.homepage {
+    background-color: var(--secondary);
+    min-height: 100vh;
+}
+
+.homepage > .title {
+    font-size: 4em;
+    text-align: center;
+    padding-top: 5rem;
+}
+
+.homepage .logo {
+    text-align: center;
+}
+
+
+

@@ -1,8 +1,10 @@
+import Homepage from "./components/homepage/Homepage";
+import './App.css'
 
 function App() {
   return (
     <div className="App">
-      Harmony
+      <Homepage />
     </div>
   );
 }
