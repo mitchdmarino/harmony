@@ -5,6 +5,7 @@ import Connect from "../connect/Connect"
 import Conflicts from "../conflicts/Conflicts"
 import Goals from "../goals/Goals"
 import Memories from "../memories/Memories"
+import UserSettings from "../user-settings/UserSettings"
 
 export default function PartnerPage({user}) {
     const [content, setContent] = useState("connect")

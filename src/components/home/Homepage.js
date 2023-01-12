@@ -7,17 +7,6 @@ import Typography from '@mui/material/Typography';
 import AuthForm from '../login/AuthForm';
 import YinYang from '../misc/YinYang';
 
-const user1 = {
-    name: "Mitchell",
-    partner: "Dija",
-    couple: {
-        photos: [],
-        questions: [],
-        goals: [],
-        conflicts:[],
-    }
-}
-
 const style = {
     position: 'absolute',
     top: '50%',
@@ -30,9 +19,7 @@ const style = {
     p: 4,
   };
 
-// const user1 = null
-
-export default function Homepage({user=user1}) {
+export default function Homepage({user=null}) {
     const [showAuth, setShowAuth] = useState(true)
     const [openSignup, setOpenSignup] = useState(false)
     const [openLogin, setOpenLogin] = useState(false)
@@ -41,6 +28,7 @@ export default function Homepage({user=user1}) {
     const handleSignupClose = () => setOpenSignup(false);
     const handleLoginOpen = () => setOpenLogin(true);
     const handleLoginClose = () => setOpenLogin(false);
+
     useEffect(() => {
         if (user) {
             setShowAuth(false)
@@ -66,7 +54,7 @@ export default function Homepage({user=user1}) {
                             aria-describedby="modal-modal-description"
                         >
                             <Box sx={style}>
-                                <AuthForm type="login"/>
+                                <AuthForm type=""/>
                             </Box>
                         </Modal>
                         <button className='josefin-400' onClick={handleLoginOpen}>Log In</button>
