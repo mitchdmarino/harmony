@@ -8,9 +8,13 @@ import Goals from "../goals/Goals"
 import Memories from "../memories/Memories"
 import CoupleSetup from "../couple/CoupleSetup";
 
+import axios from "axios";
+import { REST_API_SERVER_URL } from "../../utils/constants";
+
 
 export default function PartnerPage({user, setUser}) {
     const [content, setContent] = useState("connect")
+    const [partners, setPartners] = useState([])
     var tabContent
     switch(content) {
         case "conflicts":
@@ -30,7 +34,21 @@ export default function PartnerPage({user, setUser}) {
         setContent(tab)
     }
 
-    
+    useEffect(() => {
+        const getCoupleInfo = async () => {
+            const token = localStorage.getItem("jwt")
+            try {
+                const response = await axios.get(`${REST_API_SERVER_URL}/couple`, {headers: {Authorization: token}})
+                setPartners(response.data.couple.users)
+                
+            } catch (error) {
+                console.warn(error)
+            }
+        }
+        if (user.coupleId) {
+            getCoupleInfo()
+        }
+    }, [user.coupleId])   
 
     return (
         <>
@@ -39,12 +57,13 @@ export default function PartnerPage({user, setUser}) {
                 <>
                     
                     <div className="profiles">
-                        <div className="profile-pic">
-                            M
-                        </div>
-                        <div className="profile-pic">
-                            D
-                        </div>
+                        {partners.map(partner => {
+                            return (
+                                <div className="profile-pic">
+                                    {partner.fname}
+                                </div>
+                            )
+                        })}
                     </div>
                 
                     <Navbar handleTabClick={(tab) => handleTabClick(tab)}/>
