@@ -57,9 +57,9 @@ export default function PartnerPage({user, setUser}) {
                 <>
                     
                     <div className="profiles">
-                        {partners.map(partner => {
+                        {partners.map((partner, i) => {
                             return (
-                                <div className="profile-pic">
+                                <div className="profile-pic" key={"partner"+i}>
                                     {partner.fname}
                                 </div>
                             )
