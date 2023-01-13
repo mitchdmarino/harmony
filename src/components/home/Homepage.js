@@ -3,7 +3,6 @@ import './Homepage.css'
 import PartnerPage from './Partnerpage'
 import Modal from '@mui/material/Modal'
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import AuthForm from '../login/AuthForm';
 import YinYang from '../misc/YinYang';
 
@@ -19,7 +18,7 @@ const style = {
     p: 4,
   };
 
-export default function Homepage({user=null}) {
+export default function Homepage({user=null, setUser}) {
     const [showAuth, setShowAuth] = useState(true)
     const [openSignup, setOpenSignup] = useState(false)
     const [openLogin, setOpenLogin] = useState(false)
@@ -54,7 +53,7 @@ export default function Homepage({user=null}) {
                             aria-describedby="modal-modal-description"
                         >
                             <Box sx={style}>
-                                <AuthForm type=""/>
+                                <AuthForm type="signup" setUser={setUser}/>
                             </Box>
                         </Modal>
                         <button className='josefin-400' onClick={handleLoginOpen}>Log In</button>
@@ -65,7 +64,7 @@ export default function Homepage({user=null}) {
                             aria-describedby="modal-modal-description"
                         >
                             <Box sx={style}>
-                            <AuthForm type="login"/>
+                            <AuthForm type="login" setUser={setUser}/>
                             </Box>
                         </Modal>
                     </div>
@@ -73,7 +72,7 @@ export default function Homepage({user=null}) {
                 
             ) : (
                 <>
-                    <PartnerPage user={user}/>
+                    <PartnerPage user={user} setUser={setUser}/>
                 </>
             )}
             

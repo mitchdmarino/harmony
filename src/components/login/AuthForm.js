@@ -1,7 +1,9 @@
 import { useState } from "react"
 import axios from "axios"
+import { REST_API_SERVER_URL } from "../../utils/constants"
+import jwt_decode from "jwt-decode"
 
-export default function AuthForm({type}) {
+export default function AuthForm({type, setUser}) {
     const initialForm={
         fname: '',
         lname: '', 
@@ -10,15 +12,50 @@ export default function AuthForm({type}) {
         password2: '',
     }
     const [form, setForm] = useState(initialForm)
-    const handleLoginSubmit = (e, form, setForm) => {
+    const [msg, setMsg] = useState('')
+
+    const handleLoginSubmit = async (e, form, setForm) => {
         e.preventDefault()
-        console.log(form)
-        setForm(initialForm)
+        // console.log(form)
+        
+        try {
+            const response = await axios.post(`${REST_API_SERVER_URL}/user/login`, form)
+            if (response.status === 200) {
+                const { token } = response.data
+                localStorage.setItem("jwt", token)
+                const decoded = jwt_decode(token)
+                setUser(decoded)
+                setForm(initialForm)
+                setMsg("Login success.")
+            } else if (response.status === 400) {
+                setMsg(response.msg)
+            }
+            
+        } catch (error) {
+            console.warn(error)
+            setMsg("An error occured")
+        }
     }
-    const handleSignupSubmit = (e, form, setForm) => {
+    const handleSignupSubmit = async (e, form, setForm) => {
         e.preventDefault()
-        console.log(form)
-        setForm(initialForm)
+        // console.log(form)
+        try {
+            const response = await axios.post(`${REST_API_SERVER_URL}/user/signup`, form)
+            if (response.status === 201) {
+                const { token } = response.data
+                localStorage.setItem("jwt", token)
+                const decoded = jwt_decode(token)
+                setUser(decoded)
+                setForm(initialForm)
+                setMsg("Signup success.")
+            } else if (response.status === 400) {
+                setMsg(response.msg)
+            }
+            
+        } catch (error) {
+            console.warn(error)
+            setMsg("An error occured")
+        }
     }
 
     return (
@@ -37,6 +74,7 @@ export default function AuthForm({type}) {
                         </div>
                         <button type='submit'>Log In</button>
                     </form>
+                    {msg}
                 </div>): (
                 <div className="signup-form">
                     <h3>Create your account</h3>
@@ -63,6 +101,7 @@ export default function AuthForm({type}) {
                         </div>
                         <button type='submit'>Sign Up</button>
                     </form>
+                    {msg}
                 </div>
                 )
             }
