@@ -1,12 +1,19 @@
 .homepage {
     background-color: var(--secondary);
     min-height: 100vh;
+    padding-top: 100px;
 }
 
-.homepage > .title {
+.homepage .welcome {
+    background-color: rgb(48, 190, 145);
+    margin: 0 15%;
+    border-radius: 20px;
+}
+
+.homepage  .title {
     font-size: 4em;
     text-align: center;
-    padding-top: 5rem;
+    padding-top: 3rem;
 }
 
 .homepage .logo {

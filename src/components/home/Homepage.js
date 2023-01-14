@@ -38,12 +38,12 @@ export default function Homepage({user=null, setUser}) {
     }, [user])
     return (
         <div className="homepage">
-            <h1 className="primary jost-400 title">Harmony</h1>
             {/* logo */}
             {showAuth ? (
-                <>
+                <div className='welcome'>
+                    <h1 className="primary spectral-400 title">Harmony</h1>
                     <YinYang />
-                    <p>Relationships are a melody. Find your harmony</p>
+                    <p></p>
                     <div className='auth-section'>
                         <button className='josefin-400' onClick={handleSignupOpen}>Sign Up</button>
                         <Modal
@@ -68,8 +68,7 @@ export default function Homepage({user=null, setUser}) {
                             </Box>
                         </Modal>
                     </div>
-                </>
-                
+                </div>
             ) : (
                 <>
                     <PartnerPage user={user} setUser={setUser}/>
