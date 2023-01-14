@@ -12,8 +12,9 @@ const style = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
+    bgcolor: '#FAF0CA',
+    border: '2px solid #72A98F',
+    borderRadius: "20px",
     boxShadow: 24,
     p: 4,
   };
@@ -43,7 +44,6 @@ export default function Homepage({user=null, setUser}) {
                 <div className='welcome'>
                     <h1 className="primary spectral-400 title">Harmony</h1>
                     <YinYang />
-                    <p></p>
                     <div className='auth-section'>
                         <button className='josefin-400' onClick={handleSignupOpen}>Sign Up</button>
                         <Modal

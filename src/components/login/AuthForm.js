@@ -2,6 +2,7 @@ import { useState } from "react"
 import axios from "axios"
 import { REST_API_SERVER_URL } from "../../utils/constants"
 import jwt_decode from "jwt-decode"
+import './AuthForm.css'
 
 export default function AuthForm({type, setUser}) {
     const initialForm={
@@ -62,7 +63,7 @@ export default function AuthForm({type, setUser}) {
         <div className="auth-container">
             {type==="login" ? (
                 <div className="login-form">
-                    <h3>Sign in to your account</h3>
+                    <h3 className="josefin-400">Sign in to your account</h3>
                     <form onSubmit={(e) => handleLoginSubmit(e,form, setForm)}>
                         <div>
                             <label htmlFor='email'>Email</label>
@@ -77,7 +78,7 @@ export default function AuthForm({type, setUser}) {
                     {msg}
                 </div>): (
                 <div className="signup-form">
-                    <h3>Create your account</h3>
+                    <h3 className="josefin-400">Create your account</h3>
                     <form onSubmit={(e) => handleSignupSubmit(e,form, setForm)}>
                         <div>
                             <label htmlFor='fname'>First Name</label>
