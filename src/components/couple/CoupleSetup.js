@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { REST_API_SERVER_URL } from "../../utils/constants"
 import axios from "axios"
+import jwt_decode from "jwt-decode"
 
 
 export default function CoupleSetup({user, setUser}) {
@@ -18,6 +19,7 @@ export default function CoupleSetup({user, setUser}) {
         try {
             const response = await axios.post(`${REST_API_SERVER_URL}/couple/${code}/partner`,{}, options)
             if(response.status === 200) {
+                localStorage.setItem("jwt", response.data.token)
                 setUser(response.data.user)
             }
         } catch (error) {
@@ -35,8 +37,9 @@ export default function CoupleSetup({user, setUser}) {
         }
         try {
             const response = await axios.post(`${REST_API_SERVER_URL}/couple`, {}, options)
-            if(response.status === 200) {
-                setUser(response.data.user)
+            if(response.status === 201) {
+                localStorage.setItem("jwt", response.data.token)
+                setUser(jwt_decode(response.data.token))
             }
         } catch (error) {
             console.warn(error)

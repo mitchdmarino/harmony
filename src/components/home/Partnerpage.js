@@ -53,6 +53,7 @@ export default function PartnerPage({user, setUser}) {
     return (
         <>
             <Link to="/settings">Settings</Link>
+            <p>Couple id: {user.coupleId}</p>
             {user.coupleId ? (
                 <>
                     
