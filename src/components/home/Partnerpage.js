@@ -10,6 +10,7 @@ import CoupleSetup from "../couple/CoupleSetup";
 
 import axios from "axios";
 import { REST_API_SERVER_URL } from "../../utils/constants";
+import Profile from "../misc/Profile";
 
 
 export default function PartnerPage({user, setUser}) {
@@ -52,24 +53,23 @@ export default function PartnerPage({user, setUser}) {
 
     return (
         <>
-            <Link to="/settings">Settings</Link>
-            <p>Couple id: {user.coupleId}</p>
+            <div>
+            <Link to="/settings"><img style = {{height: 40, width: 40 }}src="/icons/icons_settings.svg" alt="settings icon"/></Link>
+            </div>            
             {user.coupleId ? (
-                <>
-                    
+                <div>
+                    <p>Couple id: {user.coupleId}</p>
                     <div className="profiles">
                         {partners.map((partner, i) => {
                             return (
-                                <div className="profile-pic" key={"partner"+i}>
-                                    {partner.fname}
-                                </div>
+                                <Profile key={i} user={partner}/>
                             )
                         })}
                     </div>
                 
                     <Navbar handleTabClick={(tab) => handleTabClick(tab)}/>
                     {tabContent}
-                </>
+                </div>
             ) : (
                 <>
                     {<CoupleSetup user={user} setUser={setUser}/>}
