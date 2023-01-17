@@ -2,6 +2,10 @@
   --primary: black;
   --secondary: rgb(115, 217, 161);
   --tertiary: rgb(177, 234, 197);
+  --connect: rgb(134, 244, 234);
+  --memories: rgb(172, 244, 134);
+  --goals: rgb(244, 233, 134);
+  --conflicts: rgb(244, 167, 134);
 }
 html,body {
   padding: 0;

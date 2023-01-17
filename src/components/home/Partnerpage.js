@@ -53,8 +53,8 @@ export default function PartnerPage({user, setUser}) {
 
     return (
         <>
-            <div>
-            <Link to="/settings"><img style = {{height: 40, width: 40 }}src="/icons/icons_settings.svg" alt="settings icon"/></Link>
+            <div className="settings-link">
+                <Link to="/settings"><img style = {{height: 40, width: 40 }}src="/icons/icons_settings.svg" alt="settings icon"/></Link>
             </div>            
             {user.coupleId ? (
                 <div>
@@ -62,7 +62,9 @@ export default function PartnerPage({user, setUser}) {
                     <div className="profiles">
                         {partners.map((partner, i) => {
                             return (
-                                <Profile key={i} user={partner}/>
+                                <div>
+                                    <Profile key={i} user={partner}/>
+                                </div>
                             )
                         })}
                     </div>

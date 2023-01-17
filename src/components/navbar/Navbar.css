@@ -1,13 +1,37 @@
 .nav {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    margin: 0 20px;;
 }
 
 .nav-item {
-    background-color: white;;
-    border-radius: 10px;
-    min-width: 100px;
-    text-align: center;
-    margin: 10px 20px;
+    /* background-color: var(--connect); */
+    border-radius: 10px 10px 0 0;
+    border: 2px solid black;
+    padding: 10px;
+    border-bottom: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* margin: 10px 20px; */
+}
+
+.nav .connect-tab {
+    background-color: var(--connect);
+}
+.nav .memories-tab {
+    background-color: var(--memories);
+}
+.nav .goals-tab {
+    background-color: var(--goals);
+}
+.nav .conflicts-tab {
+    background-color: var(--conflicts);
+}
+
+.nav-item img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
 }
 
