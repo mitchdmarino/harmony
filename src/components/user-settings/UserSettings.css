@@ -126,3 +126,21 @@
 .settings .back:hover {
     cursor: pointer;
 }
+
+.delete-modal h3 {
+    color: rgb(145, 22, 22)
+}
+.delete-modal .confirm-button {
+    color: rgb(177, 11, 11);
+}
+.delete-modal .cancel-button {
+    color: rgb(5, 74, 20);
+}
+.delete-modal button {
+    background-color: transparent;
+    border-radius: 10px;
+    margin: 30px 5px 0 5px;
+    font-size: large;
+    padding: 4px;
+    cursor: pointer;
+}

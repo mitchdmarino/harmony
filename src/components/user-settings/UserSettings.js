@@ -3,6 +3,21 @@ import { Navigate, useNavigate, redirect } from "react-router-dom";
 import { deleteUser, editUser, showUser } from "../../utils/rest_api";
 import Profile from "../misc/Profile";
 import './UserSettings.css'
+import Modal from '@mui/material/Modal'
+import Box from '@mui/material/Box';
+
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: '#FAF0CA',
+    border: '2px solid #72A98F',
+    borderRadius: "20px",
+    boxShadow: 24,
+    p: 4,
+  };
 
 export default function UserSettings({user, setUser, handleLogout}) {
     const nav = useNavigate()
@@ -122,8 +137,21 @@ export default function UserSettings({user, setUser, handleLogout}) {
                 )}
                 <div className="exit-button-group button-group">
                     <button onClick={doLogoutAndRedirect}>Log Out</button>
-                    <button onClick={handleDeleteAccount}>Delete Account</button>
+                    <button onClick={() => setShowDelete(true)}>Delete Account</button>
                 </div>
+                <Modal
+                    open={showDelete}
+                    onClose={() => setShowDelete(false)}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                    className="delete-modal"
+                >
+                    <Box sx={style}>
+                        <h3>Are you sure you want to delete your account? This action cannot be undone.</h3>
+                        <button onClick={handleDeleteAccount} className="confirm-button">Yes, delete my account.</button>
+                        <button onClick={()=>setShowDelete(false)} className="cancel-button">No, go back.</button>
+                    </Box>
+                </Modal>
                 
                 
             </div>
