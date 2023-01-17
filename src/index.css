@@ -50,6 +50,10 @@ code {
   color: var(--secondary)
 }
 
+.text-center {
+  text-align: center;
+}
+
 @keyframes fadeInAnimation {
   0% {
       opacity: 0;

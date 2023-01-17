@@ -1,0 +1,128 @@
+.settings {
+    background-color: var(--secondary);
+    min-height: 100vh;
+    padding-top: 100px;
+}
+
+.settings .container {
+    background-color: rgb(48, 190, 145);
+    margin: 0 15%;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.settings .edit-profile {
+    background-color: #FAF0CA;
+    border-radius: 20px;
+    margin: 20px 40px;
+    padding: 20px
+}
+
+.settings label {
+    font-family: 'Jost', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+.settings form >div {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px auto;
+    max-width: 400px;
+    
+}
+.settings .show-profile >div {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px auto;
+    max-width: 400px;
+    
+}
+
+.settings input {
+    background-color: #FAF0CA;
+    width: 10rem;
+    border: none;
+    border-bottom: 2px solid #073B3A;
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+}
+
+.settings button {
+    background-color: #6b6c61;
+    padding: 10px;
+    display: block;
+    margin: 20px auto 0 auto;
+    color: #FAF0CA;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    font-family: 'Josefin Sans', sans-serif;;
+
+}
+.settings button:hover {
+    background-color: #46463f;
+    padding: 10px;
+    color: #FAF0CA;
+    cursor: pointer;
+
+}
+
+.color-show {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    /* width: 100px; */
+    /* height: 20px; */
+}
+
+.color-show div {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    /* display: inline-block; */
+}
+
+.color-show p {
+    /* margin: 0 */
+}
+
+.settings .button-group {
+    display: flex;
+    justify-content: center;
+}
+
+
+.exit-button-group > button {
+    background-color: transparent;
+    border: none;
+}
+
+.show-profile {
+    font-size: 1.5rem;
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 20px 20px;
+}
+
+.show-profile span {
+    font-weight: 800;
+}
+
+.edit-button {
+    background-color: var(--secondary) !important;
+    border: none !important;
+    /* display: inline !important; */
+    color: black !important;
+
+}
+
+.settings .profile-head {
+    display: flex;
+    justify-content: center;
+}
+
+.settings .back {
+    margin: 10px 20px;
+}
+.settings .back:hover {
+    cursor: pointer;
+}

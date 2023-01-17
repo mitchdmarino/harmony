@@ -30,3 +30,15 @@ export const showUser = async (token) => {
         return false
     }
 }
+
+export const editUser = async (token, body) => {
+    try {
+        const response = await axios.put(`${REST_API_SERVER_URL}/user`,{fname: body.fname, lname: body.lname, email: body.email, color: body.color, profilePicture: body.profilePicture},{headers: {Authorization: token}}, )
+        if (response.status === 200) {
+            return response.data.user
+        }
+    } catch (error) {
+        console.warn(error)
+        return false
+    }
+}

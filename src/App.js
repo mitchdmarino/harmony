@@ -1,22 +1,33 @@
 import Homepage from "./components/home/Homepage";
 import './App.css'
 import { useState, useEffect } from "react";
-import { Route, BrowserRouter as Router, Routes, redirect } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes, redirect, useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode"
 import UserSettings from "./components/user-settings/UserSettings";
 import axios from "axios";
 import { REST_API_SERVER_URL } from "./utils/constants";
+import { showUser } from "./utils/rest_api";
 
 
 function App() {
   const [user, setUser] = useState(null)
   useEffect(() => {
-      const token = localStorage.getItem("jwt");
-      if (token) {
-        setUser(jwt_decode(token))
-      } else {
-        setUser(null)
+      const getUserInfo = async () => {
+        const token = localStorage.getItem("jwt");
+        try {
+          if (token) {
+            const response = await showUser(token)
+            setUser(response)
+          } else {
+            setUser(null)
+          }
+        } catch (error) {
+          console.warn(error)
+        }
+        
       }
+      getUserInfo()
+      
   }, [])
 
   const handleLogout = () => {
@@ -25,7 +36,6 @@ function App() {
         // If it exists, delete it.
         localStorage.removeItem("jwt");
         setUser(null)
-        return redirect("/")
     }   
   };
 
