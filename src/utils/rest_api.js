@@ -42,3 +42,33 @@ export const editUser = async (token, body) => {
         return false
     }
 }
+
+export const getQuestions = async (token) => {
+    try {
+        const response = await axios.get(`${REST_API_SERVER_URL}/couple`, {headers: {Authorization: token}})
+        return response.data.couple.questions
+    } catch (error) {
+        console.warn(error)
+        return false
+    }
+}
+
+export const createQuestion = async (token, question) => {
+    try {
+        const response = await axios.post(`${REST_API_SERVER_URL}/question`, {question: question}, {headers: {Authorization: token}})
+        return response.data.couple.questions
+    } catch (error) {
+        console.warn(error)
+        return false
+    }
+}
+
+export const answerQuestion = async (token, questionId, answer) => {
+    try {
+        const response = await axios.post(`${REST_API_SERVER_URL}/questionId/${questionId}/answer`)
+        return response.data.question
+    } catch(error) {
+        console.warn(error)
+        return false
+    }
+}
