@@ -1,0 +1,13 @@
+.answer-bubble {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.answer-bubble .answer-text {
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    width: 100%
+}
