@@ -16,6 +16,7 @@ import Profile from "../misc/Profile";
 export default function PartnerPage({user, setUser}) {
     const [content, setContent] = useState("connect")
     const [partners, setPartners] = useState([])
+    const [showCoupleId, setShowCoupleId] = useState("false")
     var tabContent
     switch(content) {
         case "conflicts":
@@ -41,6 +42,11 @@ export default function PartnerPage({user, setUser}) {
             try {
                 const response = await axios.get(`${REST_API_SERVER_URL}/couple`, {headers: {Authorization: token}})
                 setPartners(response.data.couple.users)
+                if (response.data.couple.users.length ===1) {
+                    setShowCoupleId(true)
+                } else {
+                    setShowCoupleId(false)
+                }
                 
             } catch (error) {
                 console.warn(error)
@@ -58,7 +64,7 @@ export default function PartnerPage({user, setUser}) {
             </div>            
             {user.coupleId ? (
                 <div>
-                    <p>Couple id: {user.coupleId}</p>
+                    
                     <div className="profiles">
                         {partners.map((partner, i) => {
                             return (
@@ -67,6 +73,13 @@ export default function PartnerPage({user, setUser}) {
                                 </div>
                             )
                         })}
+                        {
+                            showCoupleId ? (
+                                <div className="coupleId">
+                                    <p className="jost-400">Share this code with your partner:<br></br> <span>{user.coupleId}</span></p>
+                                </div>
+                            ) : ""
+                        }
                     </div>
                 
                     <Navbar handleTabClick={(tab) => handleTabClick(tab)}/>
