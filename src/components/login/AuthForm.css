@@ -45,4 +45,14 @@
 
 }
 
+@media screen and (max-width: 750px) {
+    .auth-container label {
+        font-size: 1rem;
+        min-width: 80px;
+    }
+
+    .auth-container input {
+        width: 10rem
+    }
+}
 

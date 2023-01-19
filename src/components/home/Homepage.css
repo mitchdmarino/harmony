@@ -35,6 +35,18 @@
     font-size: 2rem;
 }
 
+@media screen and (max-width: 750px) {
+    .auth-section button {
+        min-width: 100px;
+        font-size: 1rem;
+        padding: 10px;
+        margin: 20px 10px;
+    }
+    .homepage .title {
+        font-size: 2rem
+    }
+}
+
 .auth-section button:hover {
     background-color: white;
     cursor: pointer;

@@ -1,0 +1,40 @@
+.couple-setup {
+    padding: 10px;
+}
+
+.couple-setup button {
+    background-color: var(--button);
+    padding: 20px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    display: block;
+    margin: 40px auto 0 auto
+}
+
+.couple-setup h1 {
+    text-align: center;
+    color: var(--primary)
+}
+
+.couple-setup .create-couple-button {
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+.couple-setup .join-couple-form label {
+    color: var(--primary);
+    font-size: 2rem;
+    padding: 20px;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.couple-setup .join-couple-form input {
+    background-color: var(--primary);
+    color: white;
+    padding: 10px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+}

@@ -144,3 +144,21 @@
     padding: 4px;
     cursor: pointer;
 }
+
+@media screen and (max-width: 750px) {
+    .settings .container {
+        margin: 2px;
+        padding: 2px;
+    }
+    .settings .edit-profile {
+        background-color: #FAF0CA;
+        border-radius: 20px;
+        margin: auto;
+        padding: 2px
+    }
+    .show-profile {
+        font-size: 1rem;
+        font-family: 'Josefin Sans', sans-serif;
+        margin: 20px 20px;
+    }
+}

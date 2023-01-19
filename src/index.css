@@ -6,6 +6,7 @@
   --memories: rgb(172, 244, 134);
   --goals: rgb(244, 233, 134);
   --conflicts: rgb(244, 167, 134);
+  --button: rgb(241, 246, 185);
 }
 html,body {
   padding: 0;
