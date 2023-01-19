@@ -11,6 +11,7 @@ export default function AuthForm({type, setUser}) {
         email: '', 
         password: '', 
         password2: '',
+        color: '#e66465',
     }
     const [form, setForm] = useState(initialForm)
     const [msg, setMsg] = useState('')
@@ -99,6 +100,10 @@ export default function AuthForm({type, setUser}) {
                         <div>
                             <label htmlFor='password2'>Confirm Password</label>
                             <input type="password" name="password2" value={form.password2} onChange={(e) => setForm({...form, password2: e.target.value})}></input>
+                        </div>
+                        <div>
+                            <label htmlFor='color'>Color</label>
+                            <input type="color" name="color" value={form.color} onChange={(e) => setForm({...form, color: e.target.value})}></input>
                         </div>
                         <button type='submit'>Sign Up</button>
                     </form>
