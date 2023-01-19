@@ -45,8 +45,9 @@ export const editUser = async (token, body) => {
 
 export const getQuestions = async (token) => {
     try {
-        const response = await axios.get(`${REST_API_SERVER_URL}/couple`, {headers: {Authorization: token}})
-        return response.data.couple.questions
+        const response = await axios.get(`${REST_API_SERVER_URL}/question`, {headers: {Authorization: token}})
+        
+        return response.data.questions.reverse()
     } catch (error) {
         console.warn(error)
         return false
@@ -56,6 +57,7 @@ export const getQuestions = async (token) => {
 export const createQuestion = async (token, question) => {
     try {
         const response = await axios.post(`${REST_API_SERVER_URL}/question`, {question: question}, {headers: {Authorization: token}})
+
         return response.data.couple.questions
     } catch (error) {
         console.warn(error)
@@ -65,8 +67,14 @@ export const createQuestion = async (token, question) => {
 
 export const answerQuestion = async (token, questionId, answer) => {
     try {
-        const response = await axios.post(`${REST_API_SERVER_URL}/questionId/${questionId}/answer`)
-        return response.data.question
+        const response = await axios.post(`${REST_API_SERVER_URL}/question/${questionId}/answer`, {text: answer}, {headers: {Authorization: token}})
+        if(response.status === 200)
+        {
+            return response.data.question
+        }
+        else {
+            return false
+        }
     } catch(error) {
         console.warn(error)
         return false

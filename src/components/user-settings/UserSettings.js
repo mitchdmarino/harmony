@@ -53,6 +53,7 @@ export default function UserSettings({user, setUser, handleLogout}) {
         if(deleteUser(token)){
             console.log("account deleted")
             handleLogout()
+            nav("/")
         }
         else {
             console.log("error occured")

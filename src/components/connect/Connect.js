@@ -4,7 +4,7 @@ import './Connect.css'
 import Question from './questions/Question'
 import Modal from '@mui/material/Modal'
 import Box from '@mui/material/Box';
-import { toBeRequired } from '@testing-library/jest-dom/dist/matchers'
+
 
 
 const style = {
@@ -20,7 +20,7 @@ const style = {
     p: 4,
   };
 
-export default function Connect() {
+export default function Connect({couple, user}) {
     const [questions, setQuestions] = useState([])
     const [openCreate, setOpenCreate] = useState(false)
     const [question, setQuestion] = useState("")
@@ -37,14 +37,13 @@ export default function Connect() {
         getInfo()
     },[])
 
-    const handleCreateQuestion = (e) => {
+    const handleCreateQuestion = async (e) => {
         e.preventDefault()
         const token = localStorage.getItem("jwt")
         const getResponse = async () => {
             const response = await createQuestion(token, question)
             if (response) {
-                console.log(response)
-                setQuestions(response)
+                setQuestions(await getQuestions(token))
                 setOpenCreate(false)
             }
         }
@@ -56,13 +55,13 @@ export default function Connect() {
     if (questions.length>=1) {
         questionContent = questions.map((question, i)=> {
             return (
-                <Question question={question} key={i}/>
+                <Question question={question} user={user} key={i} setQuestions={setQuestions}/>
             )
         })}
 
     return (
         <div className="connect">
-            <button onClick={() => setOpenCreate(true)}>Ask a new question</button>
+            <button className="new-question-button"onClick={() => setOpenCreate(true)}>Ask a new question</button>
             <Modal
                 className='create-question-form'
                 open={openCreate}
@@ -77,7 +76,7 @@ export default function Connect() {
                             <label htmlFor="question" className='jost-400'>Question</label>
                 
                         <div>
-                            <textarea className="jost-400" name="question" value={question} onChange={(e) => setQuestion(e.target.value)} placeholder='write your question here ...'/>
+                            <textarea required className="jost-400" name="question" value={question} onChange={(e) => setQuestion(e.target.value)} placeholder='write your question here ...'/>
                         </div>
                         <div>
                             

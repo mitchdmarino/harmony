@@ -17,21 +17,24 @@ export default function PartnerPage({user, setUser}) {
     const [content, setContent] = useState("connect")
     const [partners, setPartners] = useState([])
     const [showCoupleId, setShowCoupleId] = useState("false")
-    var tabContent
-    switch(content) {
-        case "conflicts":
-            tabContent = <Conflicts />
-            break;
-        case "memories":
-            tabContent = <Memories />
-            break;
-        case "goals":
-            tabContent = <Goals />
-            break;
-        default:
-            tabContent = <Connect />
-
+    var tabContent = ""
+    if(user) {
+        switch(content) {
+            case "conflicts":
+                tabContent = <Conflicts/>
+                break;
+            case "memories":
+                tabContent = <Memories />
+                break;
+            case "goals":
+                tabContent = <Goals />
+                break;
+            default:
+                tabContent = <Connect user={user}/>
+    
+        }
     }
+    
     const handleTabClick = (tab) => {
         setContent(tab)
     }
@@ -68,8 +71,8 @@ export default function PartnerPage({user, setUser}) {
                     <div className="profiles">
                         {partners.map((partner, i) => {
                             return (
-                                <div>
-                                    <Profile key={i} user={partner}/>
+                                <div key={i}>
+                                    <Profile  user={partner}/>
                                 </div>
                             )
                         })}

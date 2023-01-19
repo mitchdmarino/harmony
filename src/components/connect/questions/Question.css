@@ -1,0 +1,17 @@
+.question-container {
+    border: 1px solid rgb(2, 2, 84);
+    background-color: rgb(201, 241, 246);
+    padding: 20px 10px;
+    border-radius: 20px;
+    text-align: center;
+}
+.question-container:hover {
+    background-color: rgb(93, 228, 246);
+    cursor: pointer;
+}
+
+@media screen and (min-width: 750px) {
+    .question-container {
+        font-size: 30px;
+    }
+}
