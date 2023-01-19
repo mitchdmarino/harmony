@@ -24,6 +24,7 @@ export default function Question ({question, user,setQuestions}) {
     const didUserAnswerQuestion = () => {
         if(user) {
             for (let i=0; i<question.answers.length; i++) {
+                console.log(user)
                 if (question.answers[i].author._id===user._id) {
                     return true
                 }
