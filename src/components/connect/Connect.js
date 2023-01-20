@@ -30,7 +30,6 @@ export default function Connect({couple, user}) {
         const getInfo = async () => {
             const response = await getQuestions(token)
             if (response) {
-                console.log(response)
                 setQuestions(response)
             }
         }

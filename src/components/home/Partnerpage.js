@@ -7,6 +7,7 @@ import Conflicts from "../conflicts/Conflicts"
 import Goals from "../goals/Goals"
 import Memories from "../memories/Memories"
 import CoupleSetup from "../couple/CoupleSetup";
+import YinYang from "../misc/YinYang"
 
 import axios from "axios";
 import { REST_API_SERVER_URL } from "../../utils/constants";
@@ -84,6 +85,13 @@ export default function PartnerPage({user, setUser}) {
                             ) : ""
                         }
                     </div>
+                    {partners.length ===2 ? (
+                            <div className="partner-yin-yang">
+                                <YinYang color1={partners[0].color} color2={partners[1].color} size="small"/>
+                            </div>
+                        ) : (
+                            ""
+                        ) }
                 
                     <Navbar handleTabClick={(tab) => handleTabClick(tab)}/>
                     {tabContent}

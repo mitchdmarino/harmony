@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-around;
     max-width: 500px;
-    margin: 30px auto;
+    margin: 30px auto 0 auto;
 }
 
 
@@ -35,4 +35,8 @@
 .coupleId span {
     font-weight: 800;
     word-wrap: break-word;
+}
+
+.partner-yin-yang {
+    margin-bottom: 10px;
 }

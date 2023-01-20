@@ -15,7 +15,7 @@ export default function AnswerBubble ({answer, orderReverse}) {
             <div>
                 <Profile user={answer.author} size="small" />
             </div>
-            <div className="answer-text"><p>{answer.text}</p></div>
+            <div className="answer-text"><p className='spectral-400'>{answer.text}</p></div>
         </div>
     )
 }

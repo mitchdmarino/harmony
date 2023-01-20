@@ -5,6 +5,7 @@
     border-radius: 20px;
     /* text-align: center; */
     min-height: 100px;
+    margin: 10px;
 }
 .question-container:hover {
     background-color: rgb(93, 228, 246);

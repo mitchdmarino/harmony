@@ -1,11 +1,11 @@
 .yinyang {
     background: whitesmoke;
-    width: 90px;
-    height: 180px;
+    /* width: 90px;
+    height: 180px; */
     border: solid black;
     border-radius: 50%;
     position: relative;
-    border-width: 5px 90px 5px 5px !important;
+    /* border-width: 5px 90px 5px 5px !important; */
     animation: rotation 2s linear infinite;
     margin: 0 auto;
 }

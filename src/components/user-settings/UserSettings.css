@@ -1,7 +1,7 @@
 .settings {
     background-color: var(--secondary);
     min-height: 100vh;
-    padding-top: 100px;
+    padding-top: 45px;
 }
 
 .settings .container {

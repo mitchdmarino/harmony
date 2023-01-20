@@ -82,8 +82,8 @@ export default function UserSettings({user, setUser, handleLogout}) {
 
     return (
         <div className="settings">
-            <div className="back" onClick={handleBackClick}><img src="/icons/icons_backarrow.png" alt="back arrow"></img></div>
             <div className="container">
+            <div className="back" onClick={handleBackClick}><img src="/icons/icons_backarrow.png" alt="back arrow"></img></div>
                 <h1 className="josefin-400 text-center">Settings</h1>
                 {user ? <div className="profile-head"><Profile user={user} image={user.profilePicture} /></div> : ""}
                 {user && !showEdit ? (
