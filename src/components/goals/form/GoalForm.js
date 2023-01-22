@@ -1,6 +1,8 @@
+import './GoalForm.css'
 import {useState, useRef} from "react"
 import { createGoal } from "../../../utils/rest_api"
 import StepInput from "./StepInput"
+
 
 export default function GoalForm ({setGoals}) {
     const [description, setDescription] = useState("")
@@ -45,9 +47,10 @@ export default function GoalForm ({setGoals}) {
 
     return (
         <div className="goal-form">
+            <h3>Add your goal information</h3>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="description">Desciption</label>
-                <input placeholder="describe your goal" type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+                <input placeholder="describe your goal" required type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
                 {stepValues.map((obj, index) => {
                     return <StepInput 
                                 key={index}
@@ -57,7 +60,7 @@ export default function GoalForm ({setGoals}) {
                             />
                 })}
                 <button className="add-btn" onClick={handleAddField}>
-                Add step
+                Add step <img src={"/icons/icons_add.png"} alt="plus sign"/>
                 </button>
                 <button type="submit" className="submit-btn">Submit</button>
             </form>

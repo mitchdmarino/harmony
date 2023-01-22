@@ -1,0 +1,44 @@
+.goal-form h3 {
+    margin: 0 !important;
+    padding: 20px;
+    text-align: center;
+}
+
+.goal-form label {
+    font-size: 1.3rem;
+    display: block;
+    padding: 5px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.goal-form input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid black;
+    display: block;
+    min-width: 80%;
+    margin: 0 auto 4px auto;
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+    padding: 4px;
+}
+
+.goal-form .add-btn {
+    background-color: transparent;
+    border: none;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    min-width: 100px;
+    margin: 0 auto;
+    justify-content: space-around;
+}
+
+.goal-form .submit-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    display: block;
+    margin: 20px auto;
+}

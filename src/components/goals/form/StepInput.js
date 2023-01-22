@@ -9,6 +9,8 @@ export default function StepInput ({objValue, onChange, index}) {
             id={label}
             value={value || ""}
             onChange={(e) => onChange(e, index)}
+            placeholder="step to achieve goal"
+            required
           />
         </div>
       </div>

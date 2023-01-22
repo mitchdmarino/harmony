@@ -4,6 +4,7 @@ import { finishGoalStep, getGoal } from "../../../utils/rest_api"
 
 export default function Goal ({goalId}) {
     const [goal, setGoal] = useState({})
+    const [showDetails, setShowDetails] = useState(false)
     useEffect(() => {
         const token = localStorage.getItem("jwt")
         const fetchGoalDetails = async () => {
@@ -22,21 +23,68 @@ export default function Goal ({goalId}) {
             setGoal(response)
         }
     }
+    const calcSteps = () => {
+        let completedCount = 0
+        let totalCount = 0
+        goal.steps.forEach(step => {
+            if (step.completed) {
+                completedCount +=1
+                totalCount +=1
+            } else {
+                totalCount +=1
+            }
+
+        })
+
+        return [completedCount, totalCount]
+    }
+    var style = {color: "red"}
+    if (goal && goal.title) {
+        const progress = calcSteps()
+        // console.log(progress[0], progress[1])
+        if (progress[0]===progress[1]){
+            
+            style.color = "green"
+        }
+    }
     return (
         <div className="goal">
             {goal && goal.title? (
             <>
-                {goal.title}
-                <div className="goal-steps">
-                    {goal.steps.map((step, i) => {
-                        return (
-                            <div key={i}>
-                                {step.description}
-                                {step.completed ? "done" : "todo"}
-                                <button onClick={() => handleCompleteStep(step._id)}>Complete</button>
-                            </div>
-                        )
-                    })}
+                <h3>{goal.title}</h3>
+
+                {!showDetails ? (
+                    <>
+                        <p className='progress' style={style}>{`${calcSteps()[0]}/${calcSteps()[1]}`}</p>
+                    </>
+                ) : (
+                    <>
+                        <ul className="goal-steps">
+                            
+                                {goal.steps.map((step, i) => {
+                                    return (
+                                        <li className={"step"} key={i}>
+                                            {step.description}
+                                            {step.completed ? (
+                                                <img src="/icons/icons_checked_checkbox.png" alt="checked checkbox"/>
+                                            ) : (
+                                                <button onClick={() => handleCompleteStep(step._id)}><img src="/icons/icons_unchecked_checkbox.png" alt="unchecked checkbox"/></button>
+                                            )}
+                                            
+                                        </li>
+                                    )
+                                })}
+                            
+                        </ul>
+                    </>
+                )
+                }
+                <div className='expand-button'>
+                    {showDetails ? (
+                        <button onClick={() => setShowDetails(false)}><img src="/icons/icons_up.png" alt={"up arrow"}/></button>
+                    ) : (
+                        <button onClick={() => setShowDetails(true)}><img src="/icons/icons_down.png" alt={"down arrow"}/></button>
+                    )}
                 </div>
             </>
             ): ""}

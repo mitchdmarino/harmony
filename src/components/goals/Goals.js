@@ -13,21 +13,25 @@ export default function Goals() {
         const fetchGoals = async () => {
             const response = await getGoals(token)
             if (response) {
-                setGoals(response)
+                setGoals(response.reverse())
             }
         }
         fetchGoals()
     }, [])
     return (
-        <div className="goals">
+        <> 
+         {goals && goals.length>=1 ? (
+            <div className="goals">
             {showCreate ? (
                 <div className='goals-container'>
-                    <GoalForm setGoals={setGoals}/>
-                    <button onClick={() => setShowCreate(false)}>Cancel</button>
+                    <button className="back-btn" onClick={() => setShowCreate(false)}><img src="/icons/icons_backarrow.png" alt="back arrow"/></button>
+                    <GoalForm setGoals={setGoals} setShowCreate={setShowCreate}/>
                 </div>
             ) : (
                 <div className='goals-container'>
-                    <button onClick={() => setShowCreate(true)}>Create a new goal</button>
+                    <div className='create-button-container'>
+                        <button className="create-button" onClick={() => setShowCreate(true)}>Add goal <img src="/icons/icons_add.png" alt="plus sign"/></button>
+                    </div>
                     {goals.map((goal,i) => {
                         return (
                             <Goal key={i} goalId={goal._id} />
@@ -36,5 +40,8 @@ export default function Goals() {
                 </div>
             )}
         </div>
+         ) : ""}
+        </>
+        
     )
 }

@@ -1,3 +1,53 @@
 .goal {
-    border: 2px solid black;
+    border: 1px solid var(--primary);
+    margin: 0 2px;
+    background-color: rgb(255, 248, 191);
+    padding: 20px;
+    
+}
+
+.goal h3 {
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: center;
+    font-size: 1.6rem;
+    margin: 1.5rem auto 0.2rem 0
+}
+
+.goal .expand-button {
+    background-color: rgb(255, 248, 191);
+    border: none;
+    margin: 0 auto;
+    display: block;
+}
+
+.goal .progress {
+    text-align: center;
+    margin-top: 0;
+}
+
+.goal .goal-steps {
+    padding-left: 0;
+    margin: 0 auto;
+    display: block;
+    max-width: 500px;
+}
+
+.goal .step button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+.goal .step {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    margin: 10px;
+    
+}
+
+.goal .step img {
+    height: 40px;
+    width: 40px;
 }

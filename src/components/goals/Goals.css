@@ -6,3 +6,23 @@
     border: 2px solid black;
     border-top: none;
 }
+
+.goals .create-button {
+    background-color: var(--goal);
+    padding: 20px;
+    border: none;
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+}
+
+.goals .create-button-container {
+    display: flex;
+    flex-direction: row-reverse;
+    
+}
+
+.goals-container .back-btn {
+    background-color: transparent;
+    border: none;
+}
