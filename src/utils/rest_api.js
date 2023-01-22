@@ -80,3 +80,61 @@ export const answerQuestion = async (token, questionId, answer) => {
         return false
     }
 }
+
+export const getGoals = async (token) => {
+    try {
+        const response = await axios.get(`${REST_API_SERVER_URL}/goal`, {headers: {Authorization: token}})
+        if (response.status ===200) {
+            return response.data.goals
+        }else {
+            return false
+        }
+    } catch (error) {
+        console.warn(error)
+        return false
+    }
+}
+
+export const getGoal = async (token, goalId) => {
+    try {
+        const response = await axios.get(`${REST_API_SERVER_URL}/goal/${goalId}`, {headers: {Authorization: token}})
+        if (response.status ===200) {
+            return response.data.goal
+        }else {
+            return false
+        }
+    } catch (error) {
+        console.warn(error)
+        return false
+    }
+}
+
+export const createGoal = async (token, body) => {
+    try {
+        const response = await axios.post(`${REST_API_SERVER_URL}/goal`, {title: body.description, steps: body.steps}, {headers: {Authorization: token}})
+        if (response.status === 201) {
+            return response.data.goal
+        }
+        else {
+            return false
+        }
+    } catch (error) {
+        console.warn(error)
+        return false
+    }
+}
+
+export const finishGoalStep = async (token, goalId, stepId) => {
+    try {
+        const response = await axios.post(`${REST_API_SERVER_URL}/goal/${goalId}/step/${stepId}`, {}, {headers: {Authorization: token}})
+        if (response.status === 200) {
+            return response.data.goal
+        }
+        else {
+            return false
+        }
+    } catch (error) {
+        console.warn(error)
+        return false
+    }
+}
