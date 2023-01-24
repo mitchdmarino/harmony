@@ -33,18 +33,27 @@ export default function UserSettings({user, setUser, handleLogout}) {
     const [showDelete, setShowDelete] = useState(false)
 
     useEffect(() => {
-        const token = localStorage.getItem("jwt")
-        const getUserInfo = async () => {
-        const ourUser = await showUser(token)
-        setProfileForm({
-            fname: ourUser.fname,
-            lname: ourUser.lname,
-            email: ourUser.email,
-            color: ourUser.color || "",
-            // profilePicture: ourUser.profilePicture || ""
-        })
+        // const token = localStorage.getItem("jwt")
+        // const getUserInfo = async () => {
+        //     const ourUser = await showUser(token)
+        //     setProfileForm({
+        //         fname: ourUser.fname,
+        //         lname: ourUser.lname,
+        //         email: ourUser.email,
+        //         color: ourUser.color || "",
+        //         // profilePicture: ourUser.profilePicture || ""
+        //     })
+        // }
+        // getUserInfo()
+        if (user) {
+            setProfileForm({
+                        fname: user.fname,
+                        lname: user.lname,
+                        email: user.email,
+                        color: user.color,
+                        // profilePicture: ourUser.profilePicture || ""
+                    })
         }
-        getUserInfo()
     }, [user])
 
     const handleDeleteAccount = () => {
@@ -61,6 +70,7 @@ export default function UserSettings({user, setUser, handleLogout}) {
     }
 
     const handleEditAccount = async (e) => {
+        e.preventDefault()
         const token = localStorage.getItem("jwt")
         try {
             const response = await editUser(token, profileForm)
@@ -78,6 +88,11 @@ export default function UserSettings({user, setUser, handleLogout}) {
 
     const handleBackClick = () => {
         nav("/")
+    }
+
+    const handleColorChange = (e) => {
+        // console.log(e.target.value)
+        setProfileForm({...profileForm, color: e.target.value})
     }
 
     return (
@@ -124,7 +139,7 @@ export default function UserSettings({user, setUser, handleLogout}) {
                         </div>
                         <div>
                             <label htmlFor="color">Color:</label>
-                            <input type="color" value={profileForm.color} name="color" onChange={(e) => setProfileForm({...profileForm, color:e.target.value})}/>
+                            <input type="color" value={profileForm.color} name="color" onChange={(e) => handleColorChange(e)}/>
                         </div>
                         {/* <div>
                             <label htmlFor="profilePicture">Profile Picture</label>
