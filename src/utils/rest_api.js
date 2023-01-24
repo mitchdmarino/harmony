@@ -1,6 +1,6 @@
 import axios from "axios"
-import { REST_API_SERVER_URL } from "./constants"
-import jwt_decode from "jwt-decode"
+import {  REST_API_SERVER_URL } from "./constants"
+
 
 export const deleteUser = async (token) => {
     try {
@@ -138,3 +138,56 @@ export const finishGoalStep = async (token, goalId, stepId) => {
         return false
     }
 }
+
+export const getCloudCredentials = async (token) => {
+    try {
+        
+    } catch (error) {
+        console.warn(error)
+        return false
+    }
+}
+
+export const uploadPhoto = async (token,formData) => {
+    try {
+        let response = await axios.get(`${REST_API_SERVER_URL}/photo/signature`, {headers: {Authorization: token}})
+        if (response.status === 200) {
+            const signature = response.data.signature 
+            const cloudName = response.data.cloudName 
+            const apiKey = response.data.apiKey
+            const timestamp = response.data.timestamp
+            formData.append("api_key", apiKey)
+            formData.append("timestamp", timestamp)
+            formData.append("signature", signature)
+            formData.append("folder", "Harmony")
+            let cloudResponse = await axios.post(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, formData)
+            if (cloudResponse.status === 200) {
+                const photoUrl = cloudResponse.data.url
+                // add the photoURL to the database
+                const finalResponse = await axios.post(`${REST_API_SERVER_URL}/photo`, {url: photoUrl}, {headers: {Authorization: token}})
+                if (finalResponse.status === 201) {
+                    return finalResponse.data.photos
+                }
+            }
+        }
+        // if nothing has been returned yet 
+        return false
+        
+    } catch (error) {
+        console.warn(error)
+        return false
+    }
+}
+
+export const getPhotos = async (token,page=0) => {
+    try {
+        const response = await axios.get(`${REST_API_SERVER_URL}/photo?page=${page}`, {headers: {Authorization: token}})
+        if (response) {
+            return response.data.photos
+        }
+    } catch (error) {
+        console.warn(error)
+        return false
+    }
+}
+

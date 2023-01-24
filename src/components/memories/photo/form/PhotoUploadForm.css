@@ -1,0 +1,15 @@
+.photo-upload input[type="file"] {
+    display: none;
+}
+
+.photo-upload .custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.photo-upload button {
+    background-color: transparent;
+    border: none;
+}
