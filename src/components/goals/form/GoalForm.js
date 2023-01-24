@@ -4,7 +4,7 @@ import { createGoal } from "../../../utils/rest_api"
 import StepInput from "./StepInput"
 
 
-export default function GoalForm ({setGoals}) {
+export default function GoalForm ({setGoals, setShowCreate}) {
     const [description, setDescription] = useState("")
     const [stepValues, setStepValues] = useState([
         {
@@ -40,7 +40,18 @@ export default function GoalForm ({setGoals}) {
         }
         const response = await createGoal(token,body)
         if (response) {
-            setGoals(response)
+            setGoals(response.reverse())
+            setShowCreate(false)
+            setDescription("")
+            setStepValues(
+                [
+                    {
+                        label: "Step 1",
+                        type: "text",
+                        value: "",
+                    }
+                ]
+            )
         }
     }
     

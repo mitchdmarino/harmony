@@ -113,7 +113,7 @@ export const createGoal = async (token, body) => {
     try {
         const response = await axios.post(`${REST_API_SERVER_URL}/goal`, {title: body.description, steps: body.steps}, {headers: {Authorization: token}})
         if (response.status === 201) {
-            return response.data.goal
+            return response.data.couple.goals
         }
         else {
             return false
@@ -139,14 +139,6 @@ export const finishGoalStep = async (token, goalId, stepId) => {
     }
 }
 
-export const getCloudCredentials = async (token) => {
-    try {
-        
-    } catch (error) {
-        console.warn(error)
-        return false
-    }
-}
 
 export const uploadPhoto = async (token,formData) => {
     try {

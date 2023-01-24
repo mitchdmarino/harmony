@@ -20,27 +20,30 @@ export default function Goals() {
     }, [])
     return (
         <> 
-         {goals && goals.length>=1 ? (
+         
             <div className="goals">
+            {!showCreate ? <div className='create-button-container'>
+                        <button className="create-button" onClick={() => setShowCreate(true)}>Add goal <img src="/icons/icons_add.png" alt="plus sign"/></button>
+                    </div> : ""}
             {showCreate ? (
                 <div className='goals-container'>
                     <button className="back-btn" onClick={() => setShowCreate(false)}><img src="/icons/icons_backarrow.png" alt="back arrow"/></button>
                     <GoalForm setGoals={setGoals} setShowCreate={setShowCreate}/>
                 </div>
             ) : (
+                
+                goals && goals.length>=1 ? (
                 <div className='goals-container'>
-                    <div className='create-button-container'>
-                        <button className="create-button" onClick={() => setShowCreate(true)}>Add goal <img src="/icons/icons_add.png" alt="plus sign"/></button>
-                    </div>
                     {goals.map((goal,i) => {
                         return (
                             <Goal key={i} goalId={goal._id} />
                         )
                     })}
                 </div>
+                ) : ""
             )}
         </div>
-         ) : ""}
+        
         </>
         
     )
