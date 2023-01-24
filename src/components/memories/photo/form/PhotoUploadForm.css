@@ -1,15 +1,23 @@
 .photo-upload input[type="file"] {
-    display: none;
+    color:rgb(26, 148, 26)
 }
 
 .photo-upload .custom-file-upload {
-    border: 1px solid #ccc;
+    border: 1px solid rgb(93, 239, 93);
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
+    text-align: center;
 }
 
 .photo-upload button {
     background-color: transparent;
-    border: none;
+    border: 1px solid rgb(26, 148, 26);
+    color:rgb(26, 148, 26)
+}
+
+.photo-upload {
+    margin: 20px auto;
+    display: block;
+    text-align: center;
 }

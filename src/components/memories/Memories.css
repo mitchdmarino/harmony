@@ -13,3 +13,41 @@
     text-align: center;
     font-size: 2rem;
 }
+
+.memories .photos-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+}
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons button {
+    background-color: transparent;
+    border: none;
+    padding: none;
+}
+
+@media screen and (min-width: 800px) {
+    .memories .photos-page {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media screen and (min-width: 1000px) {
+    .memories .photos-page {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+.add-img-btn{
+    background-color: rgb(60, 174, 60);
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.197);
+    border-radius: 10px;
+    margin: 0 auto;
+    color: white;
+    cursor: pointer;
+    display: block;
+}

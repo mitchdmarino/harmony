@@ -159,6 +159,7 @@ export const uploadPhoto = async (token,formData) => {
             formData.append("api_key", apiKey)
             formData.append("timestamp", timestamp)
             formData.append("signature", signature)
+            formData.append("eager", "c_fill,h_250,w_250")
             formData.append("folder", "Harmony")
             let cloudResponse = await axios.post(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, formData)
             if (cloudResponse.status === 200) {

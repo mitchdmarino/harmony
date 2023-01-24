@@ -1,0 +1,28 @@
+.photo {
+    /* background-color: rgb(136, 247, 136); */
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.photo img {
+    border-radius: 10px;
+    border: 2px solid black;
+    height: 130px;
+    width: 130px;
+}
+
+@media screen and (min-width: 500px) {
+    .photo img {
+        height: 200px;
+        width: 200px;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .photo img {
+        height: 250px;
+        width: 250px;
+    }
+}
