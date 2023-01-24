@@ -1,5 +1,5 @@
 import './GoalForm.css'
-import {useState, useRef} from "react"
+import {useState} from "react"
 import { createGoal } from "../../../utils/rest_api"
 import StepInput from "./StepInput"
 
