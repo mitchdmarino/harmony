@@ -15,6 +15,9 @@ export default function Memories() {
             const response = await getPhotos(token, page)
             if (response) {
                 setPhotos(response)
+                if (response.length < 1 && page > 0) {
+                    setPage(page-1)
+                }
             }
         }
         fetchPhotos()
