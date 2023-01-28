@@ -12,6 +12,7 @@
     border: 2px solid black;
     height: 130px;
     width: 130px;
+    object-fit: cover;
 }
 
 @media screen and (min-width: 500px) {
