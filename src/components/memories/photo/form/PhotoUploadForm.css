@@ -13,11 +13,30 @@
 .photo-upload button {
     background-color: transparent;
     border: 1px solid rgb(26, 148, 26);
-    color:rgb(26, 148, 26)
+    color:black;
+    border-radius: 4px;
+    padding: 10px;
 }
 
 .photo-upload {
     margin: 20px auto;
     display: block;
     text-align: center;
+}
+
+.photo-upload .others {
+    display: flex; 
+    justify-content: space-between;
+    margin: 30px
+}
+
+.photo-upload .others input, textarea{
+    background-color: transparent;
+    display: block;
+    width: 200px;
+    border: 1px solid rgb(26, 148, 26);
+}
+.photo-upload .others label{
+    display: block;
+    padding: 3px;
 }

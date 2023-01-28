@@ -3,6 +3,7 @@ import axios from "axios"
 import { REST_API_SERVER_URL } from "../../utils/constants"
 import jwt_decode from "jwt-decode"
 import './AuthForm.css'
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function AuthForm({type, setUser}) {
     const initialForm={
@@ -15,11 +16,12 @@ export default function AuthForm({type, setUser}) {
     }
     const [form, setForm] = useState(initialForm)
     const [msg, setMsg] = useState('')
+    const [progress, setProgress] = useState(false)
 
     const handleLoginSubmit = async (e, form, setForm) => {
         e.preventDefault()
+        setProgress(true)
         // console.log(form)
-        
         try {
             const response = await axios.post(`${REST_API_SERVER_URL}/user/login`, form)
             if (response.status === 200) {
@@ -29,17 +31,23 @@ export default function AuthForm({type, setUser}) {
                 setUser(decoded)
                 setForm(initialForm)
                 setMsg("Login success.")
+                setProgress(false)
             } else if (response.status === 400) {
                 setMsg(response.msg)
+                setProgress(false)
             }
             
         } catch (error) {
             console.warn(error)
-            setMsg("An error occured")
+            setProgress(false)
+            setMsg("Invalid Login")
         }
+    
+        
     }
     const handleSignupSubmit = async (e, form, setForm) => {
         e.preventDefault()
+        setProgress(true)
         // console.log(form)
         try {
             const response = await axios.post(`${REST_API_SERVER_URL}/user/signup`, form)
@@ -49,13 +57,16 @@ export default function AuthForm({type, setUser}) {
                 const decoded = jwt_decode(token)
                 setUser(decoded)
                 setForm(initialForm)
+                setProgress(false)
                 setMsg("Signup success.")
             } else if (response.status === 400) {
                 setMsg(response.msg)
+                setProgress(false)
             }
             
         } catch (error) {
             console.warn(error)
+            setProgress(false)
             setMsg("An error occured")
         }
     }
@@ -77,6 +88,7 @@ export default function AuthForm({type, setUser}) {
                         <button type='submit'>Log In</button>
                     </form>
                     {msg}
+                    {progress ? <CircularProgress /> : ""}
                 </div>): (
                 <div className="signup-form">
                     <h3 className="josefin-400">Create your account</h3>
@@ -107,6 +119,7 @@ export default function AuthForm({type, setUser}) {
                         </div>
                         <button type='submit'>Sign Up</button>
                     </form>
+                    {progress ? <CircularProgress /> : ""}
                     {msg}
                 </div>
                 )

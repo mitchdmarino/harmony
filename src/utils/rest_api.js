@@ -140,7 +140,7 @@ export const finishGoalStep = async (token, goalId, stepId) => {
 }
 
 
-export const uploadPhoto = async (token,formData) => {
+export const uploadPhoto = async (token,formData, location, comment) => {
     try {
         let response = await axios.get(`${REST_API_SERVER_URL}/photo/signature`, {headers: {Authorization: token}})
         if (response.status === 200) {
@@ -157,7 +157,7 @@ export const uploadPhoto = async (token,formData) => {
             if (cloudResponse.status === 200) {
                 const photoUrl = cloudResponse.data.url
                 // add the photoURL to the database
-                const finalResponse = await axios.post(`${REST_API_SERVER_URL}/photo`, {url: photoUrl}, {headers: {Authorization: token}})
+                const finalResponse = await axios.post(`${REST_API_SERVER_URL}/photo`, {url: photoUrl, location: location, comment: comment}, {headers: {Authorization: token}})
                 if (finalResponse.status === 201) {
                     return finalResponse.data.photos
                 }

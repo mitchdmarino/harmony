@@ -49,7 +49,7 @@ export default function Memories() {
                     photos.length >=1 ? (
                         photos.map((photo, i) => {
                             return (
-                                <Photo key={i} image={photo.url} />
+                                <Photo key={i} image={photo.url} location={photo.location || "hello"} comment={photo.comment || "world"} />
                             )
                         })
                     ) : ""

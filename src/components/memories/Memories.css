@@ -14,10 +14,18 @@
     font-size: 2rem;
 }
 
-.memories .photos-page {
+/* .memories .photos-page {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
+} */
+.memories .photos-page {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    justify-content: center;
+    margin: auto;
+    padding-bottom: 300px;
 }
 .buttons {
     display: flex;
@@ -30,7 +38,7 @@
     padding: none;
 }
 
-@media screen and (min-width: 800px) {
+/* @media screen and (min-width: 800px) {
     .memories .photos-page {
         grid-template-columns: 1fr 1fr 1fr;
     }
@@ -39,7 +47,7 @@
     .memories .photos-page {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
-}
+} */
 
 .add-img-btn{
     background-color: rgb(60, 174, 60);
